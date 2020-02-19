@@ -6,7 +6,8 @@ const PORT = 3000;
 
 // get some data
 app.get('/', (req, res) => {
-    res.send("a get request with / route on port" + PORT)
+    // first get the data
+    res.json(data);
 });
 
 // add some new data
