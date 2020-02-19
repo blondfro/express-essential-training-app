@@ -4,6 +4,12 @@ import data from "./data/data";
 const app = express();
 const PORT = 3000;
 
+// this is for the public folder on path /. This allows us to serve local static files.
+app.use(express.static("public"));
+
+// this is for the images folder on path images. This allows us to serve local static files.
+app.use("/images", express.static("images"));
+
 // get some data
 app.get('/', (req, res) => {
     // first get the data
