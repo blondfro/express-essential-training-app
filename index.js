@@ -56,6 +56,7 @@ app.get("/item/:id", (req, res, next) => {
 // to chain methods together:
 app.route("/item")
     .get( (req, res) => {
+         if (req.body.length === 0) throw new Error();
         res.send(" a get request has been made to /item on port: " + PORT);
     })
     .put( (req, res) => {
@@ -90,6 +91,13 @@ app.delete('/item', (req, res) => {
     res.send("a delete request with /item route on port" + PORT)
 });
 */
+
+// error handling function
+// express assumes this is an error handling function by passing it the err param.
+app.use((err, req, res, next) => {
+    console.error(err.stack);
+    res.status(500).send("Red Alert! Red Alert!: " + err.stack);
+});
 
 app.listen(PORT, () => {
     console.log("Your server is running on port" + PORT);
