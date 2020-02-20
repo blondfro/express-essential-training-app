@@ -1,5 +1,8 @@
 import express from "express";
-import data from "./data/data";
+import favicon from "serve-favicon";
+import path from "path";
+
+import data from "./data/data.json";
 
 const app = express();
 const PORT = 3000;
@@ -7,14 +10,17 @@ const PORT = 3000;
 // this is for the public folder on path /. This allows us to serve local static files.
 app.use(express.static("public"));
 
+// this is for the images folder on path images. This allows us to serve local static files.
+app.use("/images", express.static("images"));
+app.use(favicon(path.join(__dirname, "public", "favicon.ico")));
+
 // method to use json data
 app.use(express.json());
 
 //method to send url encoded data making sure to pass the extended method option.
 // app.use(express.urlencoded({extended: true}));
 
-// this is for the images folder on path images. This allows us to serve local static files.
-app.use("/images", express.static("images"));
+
 
 // get some data
 app.get("/", (req, res) => {
