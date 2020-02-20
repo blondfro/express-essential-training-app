@@ -18,10 +18,15 @@ app.get('/', (req, res) => {
 
 app.get("/item/:id", (req, res, next) => {
     // console log during development to make sure it all works.
+    // this is the middle ware that pulls the data.
     console.log(req.params.id);
     let user = Number(req.params.id);
     console.log(user);
     console.log(data[user]);
+    // middle ware that uses the req object.
+    console.log(" Request from " + req.originalUrl);
+    console.log(" Request type: " + req.method);
+    // everything above is middleware.
     res.send(data[user]);
     next();
 }, (req, res) => {
