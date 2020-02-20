@@ -107,6 +107,6 @@ app.use((err, req, res, next) => {
 
 app.listen(PORT, () => {
     console.log("Your server is running on port" + PORT);
-    console.log(data);
+    // console.log(data);
 });
 
