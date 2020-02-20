@@ -16,6 +16,15 @@ app.get('/', (req, res) => {
     res.json(data);
 });
 
+app.get("/item/:id", (req, res) => {
+    // console log during development to make sure it all works.
+    console.log(req.params.id);
+    let user = Number(req.params.id);
+    console.log(user);
+    console.log(data[user]);
+    res.send(data[user]);
+});
+
 // add some new data
 app.post('/newItem', (req, res) => {
     res.send("a post request with /newItem route on port" + PORT)
