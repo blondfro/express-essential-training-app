@@ -7,14 +7,23 @@ const PORT = 3000;
 // this is for the public folder on path /. This allows us to serve local static files.
 app.use(express.static("public"));
 
+// method to use json data
+app.use(express.json());
+
+//method to send url encoded data making sure to pass the extended method option.
+// app.use(express.urlencoded({extended: true}));
+
 // this is for the images folder on path images. This allows us to serve local static files.
 app.use("/images", express.static("images"));
 
 // get some data
-app.get('/', (req, res) => {
+app.get("/", (req, res) => {
     // first get the data
     res.json(data);
 });
+
+
+
 
 app.get("/item/:id", (req, res, next) => {
     // console log during development to make sure it all works.
@@ -57,12 +66,21 @@ app.route("/item")
     });
 
 // add some new data
-app.post('/newItem', (req, res) => {
-    res.send("a post request with /newItem route on port" + PORT)
+/*
+JSON Data
+    "Hello": "JSON is cool"}
+URL Encoded data
+    hello=URLEncoded+is+cool
+ */
+
+app.post("/newItem", (req, res) => {
+    console.log(req.body);
+    res.send(req.body);
+    // res.send("a post request with /newItem route on port" + PORT)
 });
 
 // update some existing data
-app.put('/updateItem', (req, res) => {
+app.put("/updateItem", (req, res) => {
     res.send("a put request with /updateItem route on port" + PORT)
 });
 
