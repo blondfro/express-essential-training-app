@@ -20,7 +20,8 @@ app.use(express.json());
 //method to send url encoded data making sure to pass the extended method option.
 // app.use(express.urlencoded({extended: true}));
 
-
+//this is for proxies
+app.set("trust proxy", "loopback");
 
 // get some data
 app.get("/", (req, res) => {
