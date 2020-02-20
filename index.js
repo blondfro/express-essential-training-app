@@ -28,6 +28,17 @@ app.get("/item/:id", (req, res, next) => {
     console.log("Did you get the right data");
 });
 
+/*app.get("/images", (req, res) => {
+    to redirect to another page.
+    res.redirect("http://www.linkedin.com");
+
+     to allow a user to download a file. specify a path in the the () above.
+     res.download("images/rocket.jpg");
+     this will end the call.
+    res.end();
+});
+*/
+
 // add some new data
 app.post('/newItem', (req, res) => {
     res.send("a post request with /newItem route on port" + PORT)
