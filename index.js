@@ -39,6 +39,18 @@ app.get("/item/:id", (req, res, next) => {
 });
 */
 
+// to chain methods together:
+app.route("/item")
+    .get( (req, res) => {
+        res.send(" a get request has been made to /item on port: " + PORT);
+    })
+    .put( (req, res) => {
+        res.send(" a put request has been made to /item on port: " + PORT);
+    })
+    .delete( (req, res) => {
+        res.send(" a delete request has been made to /item on port: " + PORT);
+    });
+
 // add some new data
 app.post('/newItem', (req, res) => {
     res.send("a post request with /newItem route on port" + PORT)
@@ -50,9 +62,11 @@ app.put('/updateItem', (req, res) => {
 });
 
 // delete some data
+/*
 app.delete('/item', (req, res) => {
     res.send("a delete request with /item route on port" + PORT)
 });
+*/
 
 app.listen(PORT, () => {
     console.log("Your server is running on port" + PORT);
